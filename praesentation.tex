@@ -21,7 +21,7 @@
 	\emph{Medical Image Analysis, Volume 35, 1 January 2017, Pages 18-31} \\
 }
 \mode<presentation>{\keywords{Brain Tumor, Segmentation, Neural Network, Deep Learning}}
-\date[18.06.2016]
+\date[18.06.2018]
 
 \begin{document}
 
@@ -48,20 +48,20 @@
 	\frametitle<presentation>{Introduction}
 	\begin{block}{Clinical Background:}
 		\begin{itemize}
-			\item $> 20.000$ new brain cancer cases per year in the US
-			\item MRI images as most common modality for tumor diagnosis
-			\item Often difficult to localize (gliomas and glioblastomas)
+			\item There are $> 20.000$ new brain cancer cases p.a. in the US.
+			\item MRI as most common modality for tumor diagnosis.
+			\item Often difficult to localize (gliomas and glioblastomas).
 			\note[item]{Difficult to localize because: they are often diffused and poorly contrasted, extend tentacle-like structures and infiltrative growth makes borders hard to distinguish from healthy tissue}
 		\end{itemize}
 	\end{block}
 	\begin{block}{Why Deep Learning?}
 		\begin{itemize}
-			\item Voxel values in MR images are not standardized
+			\item Voxel values in MR images are not standardized.
 			\note[item]{The same tumorous cells may end up having drastically different grayscale values when pictured in different hospitals (as opposed to CT images)}
-			\item \emph{Learning} features with CNNs (as opposed to classical machine learning)
+			\item \emph{Learning} features with CNNs (as opposed to classical machine learning).
 			\note[item]{Classical: features are first extracted and then a classifier is trained \\
 			DNN: learn which features to extract in the first place (in this case: convolution matrices of a CNN)}
-			\item Improved diagnostics, growth rate prediction and treatment planning
+			\item Improved diagnostics, growth rate prediction and treatment planning.
 		\end{itemize}
 	\end{block}
 \end{frame}
@@ -70,7 +70,7 @@
 \begin{frame}
 	\frametitle<presentation>{Convolutional Neural Networks (CNNs)}
 	\begin{itemize}
-		\item Deep Neural Networks adapted to image data
+		\item Deep Neural Networks adapted to image data.
 		\item Stanford University class: http://cs231n.github.io/ 
 		\note[item]{CNNs are deep neural networks, specially designed for image data}
 		\note[item]{If you want to know more about them I would recommend the CS231 course of the Stanford University. They have a lot of material to read on their website for free and they also uploaded the whole lecture on YouTube. }
@@ -80,7 +80,7 @@
 	\begin{figure}[!t]
 	\centering
 		\includegraphics[width=0.9\textwidth]{bilder/cnn_overview.png}
-	\caption{Schematic overview of a CNN architecture \hspace{\textwidth}
+	\caption{Schematic overview of a CNN architecture. \hspace{\textwidth}
 		\tiny (Image from https://medium.com/@Aj.Cheng/convolutional-neural-network-d9f69e473feb, 12.05.2018)}
 	\label{fig:cnn_overview}
 	\end{figure}
@@ -91,7 +91,7 @@
 	\begin{figure}[!t]
 	\centering
 		\includegraphics[width=0.5\textwidth]{bilder/convolution.png}
-	\caption{2D-convolution: weighted sum over a local patch of data \hspace{\textwidth}
+	\caption{2D-convolution: weighted sum over a local patch of data. \hspace{\textwidth}
 		\tiny (Image from https://i.stack.imgur.com/YDusp.png, 12.05.2018)}
 	\label{fig:convolution}
 	\end{figure}
@@ -111,17 +111,17 @@
 \begin{frame}
 	\frametitle<presentation>{Architecture}
 	\begin{itemize}
-		\item BraTS 2013 dataset
+		\item BraTS 2013 dataset.
 		\note[item]{ BraTS: Brain Tumor Segmentation \\
 			competition where research teams evaluate their algorithms, similar to ImageNet}
-		\item Slice by slice segmentation due to bad depth resolution
+		\item Slice by slice segmentation due to bad depth resolution.
 		\note[item]{They perform the segmentation slice by slice, so the segmentations of each layer in the dataset dont influence each other}
-		\item Different image modalities of the same structures
+		\item Different image modalities of the same structures.
 	\end{itemize}
 	\begin{figure}[!t]
 		\centering
 			\includegraphics[width=\textwidth]{bilder/mri_sequences.png}
-		\caption{MRI sequences used as input channels and ground truth labels}
+		\caption{MRI sequences used as input channels and ground truth labels (p. 9, figure 4).}
 		\label{fig:mri_sequences}
 	\end{figure}
 \end{frame}
@@ -133,16 +133,16 @@
 	\note[item]{Then, in their so-called 'cascaded architectures' they put two of those smaller CNNs together in order to model dependencies between spatially close labels. We will see in a minute what that means exaclty ...}
 	\begin{block}{Two-pathway architecture:}
 		\begin{itemize}
-			\item One smaller ($7 \times 7$) and one larger ($13 \times 13$) receptive field
-			\item Prediction based on local region and larger context
+			\item One smaller ($7 \times 7$) and one larger ($13 \times 13$) receptive field.
+			\item Prediction based on local region and larger context.
 		\end{itemize}
 	\end{block}
 	\begin{block}{Cascaded architectures:}
 		\begin{itemize}
-			\item Goal: model dependencies between spatially close labels
-			\item \emph{Input concatenation}
-			\item \emph{Local pathway concatenation}
-			\item \emph{Pre-output concatenation}
+			\item Goal: model dependencies between spatially close labels by
+			\item \emph{input concatenation},
+			\item \emph{local pathway concatenation}, and
+			\item \emph{pre-output concatenation}.
 		\end{itemize} 	
  	\end{block}
 \end{frame}
@@ -155,7 +155,7 @@
 	\begin{figure}[!t]
 		\centering
 			\includegraphics[width=\textwidth]{bilder/two_pathway.png}
-		\caption{Two-pathway CNN architecture}
+		\caption{Two-pathway CNN architecture (p. 6, figure 2).}
 		\label{fig:two_pathway}
 	\end{figure}
 \end{frame}
@@ -167,7 +167,7 @@
 	\begin{figure}[!t]
 		\centering
 			\includegraphics[width=\textwidth]{bilder/cascade1.png}
-		\caption{Cascaded architecture using input concatenation}
+		\caption{Cascaded architecture using input concatenation to combine two CNNs (p. 7, figure 3).}
 		\label{fig:cascade1}
 	\end{figure}
 	\note[item]{Shown: Input concatenation}
@@ -181,24 +181,24 @@
 	\frametitle<presentation>{Training}
 	\begin{block}{Gradient Descent:}
 		\begin{itemize}
-			\item Forward propagation on a mini-batch of patches
-			\item Compute label probabilities and deviation from ground truth
-			\item Update the CNNs parameters
+			\item Forward propagation on a mini-batch of patches.
+			\item Compute label probabilities and deviation from ground truth.
+			\item Update the CNNs parameters.
 		\end{itemize}
 	\end{block}
 	\begin{block}{Two-phase training:}
 		\begin{itemize}
-			\item Highly imbalanced data ($98 \%$ healthy voxels)
+			\item Highly imbalanced data ($98 \%$ healthy voxels).
 			\note[item]{Selecting patches from true distribution causes problems}
-			\item First: Pick patches such that all labels are equiprobable
-			\item Then: Re-train output layer with original distribution
+			\item First: Pick patches such that all labels are equiprobable.
+			\item Then: Re-train output layer with original distribution.
 			\note[item]{Best of both worlds: First step makes the filters sensitive to the searched features\\
 				Second step calibrates the output probabilities correctly}
 		\end{itemize} 	
  	\end{block}
  	\begin{block}{Regularization:}
 		\begin{itemize}
-			\item Prevent overfitting by bounding kernel weights and modifying output probabilities
+			\item Prevent overfitting by bounding kernel weights and modifying output probabilities.
 			\note[item]{Modify output probabilities with factors that encourage sparsity and small values in kernels (high values lead to unstable gradients for example)}
 		\end{itemize} 	
  	\end{block}
@@ -210,14 +210,14 @@
 \begin{frame}
 	\frametitle<presentation>{Two-pathway architecture}
 	\begin{itemize}
-		\item Second phase and joint training of local and global path yields better performance
-		\item Very fast, about 25s for a whole brain
+		\item Second phase and joint training of local and global path yields better performance.
+		\item Very fast, about 25s for a whole brain.
 		\note[item]{The methods with the appended asterisk here are the methods that used the two-phase training I have mentioned before}
 		\note[item]{200 times faster than the winner of the challenge (100m)}
 		\note[item]{Other methods range between 6 and 90 minutes}
 	\end{itemize}
 	\begin{table}
-		\caption{Quantitative results of the two-pathway architecture variations on the BRATS 2013 dataset}
+		\caption{Quantitative results of the two-pathway architecture variations on the BRATS 2013 dataset, where the appended * denotes two-phase training (p. 11, table 1).}
 		\label{tab:beispiel}
 		\centering
 			\begin{tabular}{ccccc}
@@ -238,13 +238,13 @@
 \begin{frame}
 	\frametitle<presentation>{Cascaded architecture}
 	\begin{itemize}
-		\item Fast, about 3 minutes for a whole brain
-		\item Winner of the challenge takes about 100 minutes
+		\item Fast, about 3 minutes for a whole brain.
+		\item Winner of the challenge takes about 100 minutes.
 		\note[item]{30 times faster than winner of the challenge (100m)}
 		\note[item]{Other methods range between 6 and 90 minutes}
 	\end{itemize}
 	\begin{table}
-		\caption{Quantitative results of the cascaded architecture variations on the BRATS 2013 dataset}
+		\caption{Quantitative results of the cascaded architecture variations on the BRATS 2013 dataset, where the appended * denotes two-phase training (p. 13, table 2).}
 		\label{tab:beispiel}
 		\centering
 			\begin{tabular}{ccccc}
@@ -267,7 +267,7 @@
 	\begin{figure}[!t]
 		\centering
 			\includegraphics[width=\textwidth]{bilder/input_cascade.png}
-		\caption{Progression of learning InputCascadeCNN*}
+		\caption{Progression of learning InputCascadeCNN* (p. 11, figure 6).}
 		\label{fig:cascade1}
 	\end{figure}
 \end{frame}
@@ -280,18 +280,18 @@
 \begin{frame}
 	\frametitle<presentation>{Conclusion}
 	\begin{itemize}
-  		\item Automatic brain tumor segmentation based on deep learning (Convolutional Neural Networks) 		
+  		\item Automatic brain tumor segmentation based on deep learning (Convolutional Neural Networks).		
 	\end{itemize}	
 	\vfill
 	\begin{block}{Improve on currently published state-of-the-art methods}
 		\begin{itemize}
-			\item Especially in speed (25s to 3m per brain)
+			\item Improvements especially in speed (25s to 3m per brain).
 		\end{itemize}
 	\end{block}
 	\begin{block}{Novel two-pathway architecture}
 		\begin{itemize}
-			\item Local details and global context
-			\item Model local dependencies of labels
+			\item Fuse local details and global context.
+			\item Model local dependencies of labels.
 		\end{itemize} 	
  	\end{block}
  	\note[item]{So, to summarize everything I have told you:}
@@ -311,6 +311,43 @@
 	\begin{center}
 		Any questions?
 	\end{center}
+\end{frame}
+
+\begin{frame}
+	\frametitle<presentation>{Additional information}
+	\begin{block}{Imbalanced data}
+		\begin{itemize}
+			\item Assume a predictor trained on 10 malignant and 90 benign tumors. A model could predict "benign" for all samples and still gain a very high accuracy. An unbalanced dataset will bias the prediction model towards the more common class!
+		\end{itemize}
+	\end{block}
+	\begin{block}{Gradient Descent}
+		\begin{itemize}
+			\item Maximize the probability of all labels in the training set or, equivalently, minimize the negative log-probability for the label $\mathbf{Y}$ given the data $\mathbf{X}$:
+		\end{itemize}
+	\begin{equation}
+		 -\log p(\mathbf{Y}|\mathbf{X}) = \sum\limits_{ij} -\log p(Y_{ij}, \mathbf{X})
+	\end{equation}
+	\end{block}	
+\end{frame}
+
+\begin{frame}
+	\frametitle<presentation>{Additional information}
+	\begin{block}{Quantitative Measurements}
+		\begin{equation}
+			Dice(P, T) = \frac{2 |P_1 \cap T_1|}{|P_1| + |T_1|}
+		\end{equation}
+		\begin{equation}
+			Sensitivity(P, T) = \frac{|P_1 \cap T_1|}{|T_1|}
+		\end{equation}
+		\begin{equation}
+			Specificity(P, T) = \frac{|P_0 \cap T_0|}{|T_0|}
+		\end{equation}
+		\begin{itemize}
+			\item $P$ - model predictions
+			\item $T$ - ground truth
+			\item Index 1 for positives and index 0 for negatives for the tumor region in question
+		\end{itemize}
+	\end{block}
 \end{frame}
 
 \end{document}\grid
